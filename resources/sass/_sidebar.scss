@@ -1,0 +1,49 @@
+#sidebar {
+  z-index: 1000;
+  position: fixed;
+  left: 250px;
+  width: 250px;
+  height: 100%;
+  margin-left: -250px;
+  overflow-y: auto;
+  background: #37474f;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  font-family: 'font-regular';
+
+  header {
+    background-color: #263238;
+    font-size: 20px;
+    line-height: 52px;
+    text-align: center;
+
+    a {
+      color: #fff;
+      display: block;
+      text-decoration: none;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+
+  .nav {
+    a {
+      background: none;
+      border-bottom: 1px solid #455a64;
+      color: #cfd8dc;
+      padding: 16px 30px;
+      font-size: 16px;
+      display: block;
+      text-decoration: none;
+
+      &:hover {
+        background: none;
+        color: #eceff1;
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+// Body
+$body-bg: #f8fafc;
+
+// Typography
+$font-family-sans-serif: 'Nunito', sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+
+@font-face {
+    font-family: 'font-regular';
+    src: url('../font/Montserrat-Regular.otf');
+}
+@font-face {
+    font-family: 'font-bold';
+    src: url('../font//Montserrat-Bold.otf');
+}
+@font-face {
+    font-family: 'font-italic';
+    src: url('../font//Montserrat-Italic.otf');
+}
+
+$font-regular: 'font-regular';
+$font-bold: 'font-bold';
+$font-italic: 'font-italic';
