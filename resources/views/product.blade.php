@@ -32,11 +32,13 @@
                     <div class="card p-0">
                         <img class="card-img-top" src="{{ $item->image }}" alt="{{ $item->name }}">
                         <div class="card-body">
-                            <div class="mb-3" style="height: 170px;">
+                            <div class="mb-3" style="height: 230px;">
                                 <h5 class="card-title">{{ $item->name }}</h5>
                                 <p class="card-text">Mô tả: {{ $item->description }}</p>
                                 <p class="card-text">Chiều cao: {{ $item->height }} cm</p>
                                 <p class="card-text">Chiều rộng: {{ $item->width }} cm</p>
+                                <p class="card-text">Giá: {{ $item->price }} VND</p>
+                                <p class="card-text">Tồn kho: {{ $item->amount }} cây</p>
                                 <p class="card-text">Phân loại: {{ Helper::typeProduct($item->product_type_id) }}
                                 </p>
                             </div>

@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('bills', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
             $table->string('staff_id');
+            $table->string('customer_id');
             $table->timestamps();
         });
     }

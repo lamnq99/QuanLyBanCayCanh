@@ -14,7 +14,12 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="{{ route('staff.index') }}">
+                Quản lý nhân viên
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('bill.index') }}">
                 Quản lý hóa đơn
             </a>
         </li>

@@ -23,6 +23,7 @@
         "sass-loader": "^11.0.1"
     },
     "dependencies": {
-        "datatables.net-bs4": "^1.11.5"
+        "datatables.net-bs4": "^1.11.5",
+        "select2": "^4.1.0-rc.0"
     }
 }
