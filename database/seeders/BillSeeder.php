@@ -23,6 +23,7 @@ class BillSeeder extends Seeder
             [
                 'staff_id' => 1,
                 'customer_id' => 1,
+                'total' => 50000
             ]
         ]);
 

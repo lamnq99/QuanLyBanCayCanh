@@ -10,7 +10,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                Bạn có chắc chắn muốn xóa sản phẩm ?
+                Bạn có chắc chắn muốn xóa khách hàng ?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>

@@ -25,11 +25,9 @@
                         <td>{{ $item->customer->number }}</td>
                         <td>{{ $item->customer->name }}</td>
                         <td>{{ Helper::nameStaff($item->staff_id) }}</td>
-                        <td>{{ Helper::priceTotal($item->billDetails[0]->unit_price, $item->billDetails[0]->amount) }}</td>
+                        <td>{{ $item->total }}</td>
                         <td>
-                            <a class="btn btn-secondar mx-3" >Xem</a>
-                            <a class="btn btn-secondar btn_delete_staff" data-bs-toggle="modal" data-id="{{ $item->id }}"
-                                data-bs-target="#modalDeleteStaff">Xóa</a>
+                            <a class="btn btn-secondar mx-3" href="bill/{{$item->id}}">Xem</a>
                         </td>
                     </tr>
                 @endforeach

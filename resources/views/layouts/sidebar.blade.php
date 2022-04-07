@@ -23,5 +23,10 @@
                 Quản lý hóa đơn
             </a>
         </li>
+        <li>
+            <a href="/report">
+                Báo cáo
+            </a>
+        </li>
     </ul>
 </div>

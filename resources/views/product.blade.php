@@ -42,7 +42,7 @@
                                 <p class="card-text">Phân loại: {{ Helper::typeProduct($item->product_type_id) }}
                                 </p>
                             </div>
-                            <a href="#" class="btn btn-product btn-primary btn_delete_product" data-bs-toggle="modal"
+                            <a href="#" class="btn btn-product btn-primary btn_delete_product px-4" data-bs-toggle="modal"
                                 data-id="{{ $item->id }}" data-bs-target="#modalDelete">Xóa</a>
                             <a href="products/{{$item->id}}/edit" class="btn btn-product btn-primary">Chỉnh sửa</a>
                         </div>

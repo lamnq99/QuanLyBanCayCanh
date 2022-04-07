@@ -98,7 +98,6 @@ class StaffController extends Controller
         $infor->birthday = $request->input('birthday');
         $infor->phone = $request->input('phone');
         $infor->user_id = $user->id;
-        // dd($infor);
 
         $infor->update();
         return redirect()->route('staff.index');

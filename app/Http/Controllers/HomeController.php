@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bill;
+use App\Models\Product;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,7 +27,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // dd(User::find(1)->staffInformation);
         return view('home');
+    }
+    public function report()
+    {
+        $bill = Bill::whereDate('updated_at', '=', Carbon::today())->get();
+        $numberBill = count($bill);
+        $total = $bill->sum('total');
+        $products = Product::all();
+        $totalProducts = $products->sum('amount');
+        return view('report', compact('numberBill', 'total', 'products', 'totalProducts'));
     }
 }

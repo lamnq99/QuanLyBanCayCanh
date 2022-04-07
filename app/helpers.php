@@ -2,6 +2,7 @@
 
 namespace App\helpers;
 
+use App\Models\Product;
 use App\Models\ProductType;
 use App\Models\StaffInformation;
 
@@ -24,5 +25,12 @@ class Helper
         $price = $unit_number * $price;
 
         return $price;
+    }
+
+    public static function nameProduct($id)
+    {
+        $name = Product::find($id)->name;
+
+        return $name;
     }
 }
