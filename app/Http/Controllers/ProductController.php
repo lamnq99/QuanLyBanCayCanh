@@ -50,6 +50,8 @@ class ProductController extends Controller
         $product->name = $request->input('name');
         $product->height = $request->input('height');
         $product->width = $request->input('width');
+        $product->price = $request->input('price');
+        $product->amount = $request->input('amount');
         $product->description = $request->input('description');
         $product->product_type_id = $request->input('type');
         $product->save();
@@ -98,6 +100,8 @@ class ProductController extends Controller
         $product->height = $request->input('height');
         $product->width = $request->input('width');
         $product->description = $request->input('description');
+        $product->price = $request->input('price');
+        $product->amount = $request->input('amount');
         $product->product_type_id = $request->input('type');
         $product->update();
         return redirect()->route('products.index');

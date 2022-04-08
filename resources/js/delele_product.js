@@ -8,4 +8,9 @@ $(document).ready(function () {
         var id = $(this).attr('data-id');
         $(".confirm_delete_customer").attr('action', `customer/${id}`);
     });
+
+    $(".btn_delete_staff").click(function () {
+        var id = $(this).attr('data-id');
+        $(".confirm_delete_staff").attr('action', `staff/${id}`);
+    });
 });

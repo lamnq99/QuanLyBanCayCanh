@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('product_id');
             $table->integer('amount');
             $table->float('unit_price');
+            $table->string('note')->nullable();
             $table->timestamps();
         });
     }

@@ -21,6 +21,8 @@ return new class extends Migration
             $table->float('height');
             $table->float('width');
             $table->string('product_type_id');
+            $table->float('price');
+            $table->integer('amount');
             $table->timestamps();
         });
     }

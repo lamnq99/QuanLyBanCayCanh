@@ -1,11 +1,21 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url("https://fonts.googleapis.com/css?family=Nunito");
 
 // Variables
-@import 'variables', 'general';
+@import "variables", "general";
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
 @import "~datatables.net-bs4/css/dataTables.bootstrap4.css";
 
-@import 'login', 'sidebar', 'product', 'modal';
+@import "login", "sidebar", "product", "modal";
+
+@media print {
+  #print {
+    background-color: red !important;
+    height: 60%;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid rebeccapurple;
+  }
+}

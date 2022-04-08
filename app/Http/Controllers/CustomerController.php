@@ -66,7 +66,7 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        $customer = Customer::find($id);
+        $customer = Customer::findOrFail($id);
         return view('edit-customer', compact('customer'));
     }
 
@@ -79,7 +79,7 @@ class CustomerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $customer = Customer::find($id);
+        $customer = Customer::findOrFail($id);
         $customer->name = $request->input('name');
         $customer->number = $request->input('phone');
         $customer->address = $request->input('address');
@@ -96,7 +96,7 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        $customer = Customer::find($id);
+        $customer = Customer::findOrFail($id);
         $customer->delete();
         return redirect()->route('customer.index');
     }

@@ -47,6 +47,22 @@
                         value="{{ old('width', $product->width) }}">
                 </div>
             </div>
+            <div class=" input-group input-group-sm mt-4 d-flex justify-content-between">
+                <div class="d-flex input-number">
+                    <div>
+                        <label class="input-group-text">Giá</label>
+                    </div>
+                    <input type="number" class="form-control @error('price') is-invalid @enderror" name="price"
+                        value="{{ old('price', $product->price) }}">
+                </div>
+                <div class="d-flex input-number">
+                    <div>
+                        <label class="input-group-text">Số lượng</label>
+                    </div>
+                    <input type="number" class="form-control @error('amount') is-invalid @enderror" name="amount"
+                        value="{{ old('amount', $product->amount) }}">
+                </div>
+            </div>
             <div class="form-group mt-4">
                 <label for="description-product" class="mb-1">Miêu tả</label>
                 <textarea class="form-control @error('description') is-invalid @enderror" id="description-product" rows="3"

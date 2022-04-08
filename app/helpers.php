@@ -2,7 +2,9 @@
 
 namespace App\helpers;
 
+use App\Models\Product;
 use App\Models\ProductType;
+use App\Models\StaffInformation;
 
 class Helper
 {
@@ -10,5 +12,25 @@ class Helper
     {
         $type = ProductType::find($product_type_id)->name;
         return $type;
+    }
+
+    public static function nameStaff($staff_id)
+    {
+        $name = StaffInformation::find($staff_id)->name;
+        return $name;
+    }
+
+    public static function priceTotal($unit_number, $price)
+    {
+        $price = $unit_number * $price;
+
+        return $price;
+    }
+
+    public static function nameProduct($id)
+    {
+        $name = Product::find($id)->name;
+
+        return $name;
     }
 }

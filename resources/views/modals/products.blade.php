@@ -52,6 +52,22 @@
                                 value="{{ old('width') }}">
                         </div>
                     </div>
+                    <div class=" input-group input-group-sm mb-3 d-flex justify-content-between">
+                        <div class="d-flex input-number">
+                            <div>
+                                <label class="input-group-text">Giá</label>
+                            </div>
+                            <input type="number" class="form-control @error('price') is-invalid @enderror"
+                                name="price" value="{{ old('price') }}">
+                        </div>
+                        <div class="d-flex input-number">
+                            <div>
+                                <label class="input-group-text">Số lượng</label>
+                            </div>
+                            <input type="number" class="form-control @error('amount') is-invalid @enderror" name="amount"
+                                value="{{ old('amount') }}">
+                        </div>
+                    </div>
                     <div class="form-group mb-3">
                         <label for="description-product">Miêu tả</label>
                         <textarea class="form-control @error('description') is-invalid @enderror" id="description-product" rows="3"
