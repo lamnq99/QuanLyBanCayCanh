@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('staff_id');
             $table->integer('customer_id');
             $table->integer('total');
+            $table->integer('print')->default(0);
             $table->timestamps();
         });
     }

@@ -1,4 +1,23 @@
 $(document).ready(function () {
+  if ($(".eachProduct").length > 0 && $('#idCustomer').val().length > 0) {
+    $("#update-bill-btn").prop("disabled", false);
+  }
+  $('.btn-delete-product').on("click", function () {
+    let del = $(this).data("id");
+    $(".eachProduct").each(function () {
+      if ($(this).data("id") === del) {
+        let x = $(this).find(".eachPrice").text();
+        totalAll = totalAll - parseInt(x);
+        $("#totalTotal").text(totalAll);
+        $(this).remove();
+      }
+    });
+    let idProduct = $(this).data("id");
+    window.localStorage.removeItem(idProduct)
+    if ($(".eachProduct").length == 0) {
+      $("#create-bill-btn").prop("disabled", true);
+    }
+  });
   $("#getCustomer").click(function () {
     let status = $('#phoneCustomer').val();
     $.ajax({
@@ -99,9 +118,8 @@ $(document).ready(function () {
     let total = $("#amountProduct").val() * $("#priceProduct").val();
     $("#totalPrice").val(total);
   });
-  var totalAll = 0;
+  var totalAll = parseInt($('#totalTotal').text());
   $("#addProduct").click(function () {
-
     let idProduct = $("#idProduct").val();
     let check = window.localStorage.getItem(idProduct);
     if (!!check) {
@@ -195,13 +213,69 @@ $(document).ready(function () {
   });
 
   $('#printBtn').on("click", function () {
-    var mywindow = window.open('', 'PRINT', 'height=600,width=800');
-    mywindow.document.write('<html><head>');
-    mywindow.document.write('<link href="../../../public/css/app.css" rel="stylesheet">');
-    mywindow.document.write('</head><body style="width: 80%; margin: auto;">');
-    mywindow.document.write($("#print").html());
-    mywindow.document.write('</body></html>');
-    console.log($("#print").html());
-    mywindow.print();
+    let id = $(this).data("id");
+    checkPrint(id);
+    function checkPrint(id) {
+      $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+        }
+      });
+      $.ajax({
+        type: "POST",
+        url: "/print",
+        data: {
+          id: id,
+        },
+        success: function (data) {
+          print();
+        }
+      });
+    }
+
+    function print() {
+      var mywindow = window.open('', 'PRINT', 'height=600,width=800');
+      mywindow.document.write('<html><head>');
+      mywindow.document.write('<link href="../../../public/css/app.css" rel="stylesheet">');
+      mywindow.document.write('</head><body style="width: 80%; margin: auto;">');
+      mywindow.document.write($("#print").html());
+      mywindow.document.write('</body></html>');
+      console.log($("#print").html());
+      mywindow.print();
+    }
+  });
+
+  $('#update-bill-btn').on("click", function () {
+    let data = [];
+    let idBill = $("#id_bill").val();
+    let idCustomer = $("#idCustomer").val();
+    let totalTotal = $("#totalTotal").text();
+
+    $(".eachProduct").each(function (index) {
+      var obj = {
+        id: $(this).find(".eachId").text(),
+        amount: $(this).find(".eachAmount").text(),
+      }
+      data.push(obj);
+    });
+
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+      }
+    });
+    $.ajax({
+      type: "PATCH",
+      url: "/bill/idBill",
+      data: {
+        idCustomer: idCustomer,
+        idBill: parseInt(idBill),
+        totalTotal: parseInt(totalTotal),
+        data: data,
+      },
+      success: function (data) {
+
+      }
+    });
   });
 });

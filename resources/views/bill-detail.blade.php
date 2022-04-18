@@ -2,9 +2,9 @@
 
 @section('content')
     <section style="padding: 30px;" id="bill-container" class="content">
-        <div id="print"
-            style="width: 60%; margin: auto; padding: 20px; display: flex; flex-direction: column">
-            <div style="width: 100%; display: flex; justify-content: space-between; align-items: center" class="bill-header">
+        <div id="print" style="width: 60%; margin: auto; padding: 20px; display: flex; flex-direction: column">
+            <div style="width: 100%; display: flex; justify-content: space-between; align-items: center"
+                class="bill-header">
                 <div class="name-shop" style="width: 50%">
                     <p style="font-weight: bold; font-size: 25px">Cửa hàng bán cây cảnh</p>
                 </div>
@@ -72,7 +72,7 @@
         </div>
         <div style="width: 60%; margin: auto;display: flex; justify-content: end; align-items: center;">
             <a href="/bill" class="btn btn-secondar mx-3">Thoát</a>
-            <a class="btn btn-secondar mx-3" id="printBtn">In hoá đơn</a>
+            <a data-id="{{ $bill->id }}" class="btn btn-secondar mx-3" id="printBtn">In hoá đơn</a>
         </div>
     </section>
 @endsection
