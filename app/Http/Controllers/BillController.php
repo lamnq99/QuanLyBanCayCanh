@@ -35,7 +35,6 @@ class BillController extends Controller
         $bill_id = DB::table('bills')->orderByDesc('id')->first()->id + 1;
         $staff = User::findOrFail(Auth::id())->with('staffInformation')->get();
         $product = Product::all();
-        // dd($product);
         return view('create-bill', compact('bill_id', 'staff', 'product'));
     }
 
@@ -89,7 +88,6 @@ class BillController extends Controller
         $detail = BillDetail::where('bill_id', $id)->get();
         $staff = StaffInformation::where('user_id', $bill->staff_id)->get();
         $customer = Customer::where('id', $bill->customer_id)->get();
-        // dd($bill);
         return view('bill-detail', compact('bill', 'detail', 'staff', 'customer'));
     }
 
@@ -101,7 +99,18 @@ class BillController extends Controller
      */
     public function edit($id)
     {
-        //
+        $bill = Bill::findOrFail($id);
+        $billDetail = BillDetail::where('bill_id', $id)->get();
+        $customer = Customer::findOrFail($bill->customer_id);
+        $staff = Auth::user();
+        $product = Product::all();
+        $total = 0;
+        foreach ($billDetail as $item) {
+            $x = $item->amount * $item->unit_price;
+            $total += $x;
+        }
+        $total = (int)$total;
+        return view('bill-update', compact('bill', 'billDetail', 'customer', 'staff', 'product', 'total'));
     }
 
     /**
@@ -113,7 +122,40 @@ class BillController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if ($request->ajax()) {
+            try {
+                $bill = Bill::findOrFail($request->idBill);
+                $bill->customer_id = $request->idCustomer;
+                $bill->total = $request->totalTotal;
+                $bill->update();
+
+                $k = BillDetail::where('bill_id', $request->idBill)->get();
+                foreach ($k as $item) {
+                    $product = Product::where('id', $item->product_id)->first();
+                    $product->amount = $product->amount + $item['amount'];
+                    $product->update();
+                }
+                BillDetail::where('bill_id', $request->idBill)->delete();
+                foreach ($request->data as $item) {
+                    $billDetail = new BillDetail();
+                    $billDetail->bill_id = (int)$bill['id'];
+                    $billDetail->product_id = (int)$item['id'];
+                    $billDetail->amount = (int)$item['amount'];
+                    $billDetail->unit_price = Product::where('id', (int)$item['id'])->get()['0']->price;
+                    $billDetail->save();
+
+                    $product = Product::find((int)$item['id']);
+                    $product->amount = $product->amount - (int)$item['amount'];
+                    $product->update();
+                }
+            } catch (\Exception $e) {
+                return response()->json(['error' => $e->getMessage()]);
+            }
+
+            return response()->json([
+                'bill' => (int)$bill['id'],
+            ]);
+        }
     }
 
     /**
@@ -131,7 +173,6 @@ class BillController extends Controller
     {
         if ($request->ajax()) {
             $customer = Customer::where('number', $request->phone)->get();
-            // dd($customer);
             return response()->json(['data' => $customer]);
         }
     }
@@ -160,6 +201,17 @@ class BillController extends Controller
         if ($request->ajax()) {
             $data = Product::findOrFail($request->id);
             return response()->json(['data' => $data]);
+        }
+    }
+
+    public function printBill(Request $request)
+    {
+        if ($request->ajax()) {
+            $id = (int)$request->id;
+            $bill = Bill::findOrFail($id);
+            $bill->print = 1;
+            $bill->update();
+            return response()->json(['data' => $bill]);
         }
     }
 }

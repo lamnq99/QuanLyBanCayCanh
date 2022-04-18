@@ -27,6 +27,7 @@
                         <td>{{ Helper::nameStaff($item->staff_id) }}</td>
                         <td>{{ $item->total }}</td>
                         <td>
+                            <button @if($item->print == 1) disabled @endif class="btn btn-secondar mx-3"><a href="bill/{{$item->id}}/edit" style="color: white; text-decoration: none">Sửa</a></button>
                             <a class="btn btn-secondar mx-3" href="bill/{{$item->id}}">Xem</a>
                         </td>
                     </tr>
