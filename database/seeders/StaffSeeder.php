@@ -25,6 +25,12 @@ class StaffSeeder extends Seeder
                     'birthday' => '1999-04-04',
                     'user_id' => $item['id'],
                     'phone' => '0966237188',
+                ],
+                [
+                    'name' => 'Nhan Vien 1',
+                    'birthday' => '1999-05-04',
+                    'user_id' => $item['id'],
+                    'phone' => '0966237188',
                 ]
             ]);
         }

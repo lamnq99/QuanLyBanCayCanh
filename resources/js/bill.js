@@ -274,7 +274,7 @@ $(document).ready(function () {
         data: data,
       },
       success: function (data) {
-
+        window.location.href = "/bill";
       }
     });
   });
