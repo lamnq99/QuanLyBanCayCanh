@@ -156,7 +156,7 @@
             </div>
             <div class="d-flex justify-content-end mt-3">
                 <a class="btn px-4 mx-3" href="{{ route('bill.index') }}">Hủy</a>
-                <input type="button" disabled id="update-bill-btn" class="btn px-4" value="Tạo">
+                <input type="button" disabled id="update-bill-btn" class="btn px-4" value="Sửa">
             </div>
         </form>
         <script>

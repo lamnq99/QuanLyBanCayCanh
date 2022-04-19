@@ -17,21 +17,21 @@ class CustomersTableSeeder extends Seeder
     {
         DB::table('customers')->insert([
             [
-                'name' => 'Nguyen Van A',
-                'number' => '0123456789',
-                'address' => '123 abc',
+                'name' => 'Nguyễn Văn Hoài',
+                'number' => '0984706934',
+                'address' => 'số 34 Minh Khai, Hai Bà Trưng, Hà Nội',
                 'email' => 'a@gmail.com'
             ],
             [
-                'name' => 'Tran Van B',
-                'number' => '0123458698',
-                'address' => '456 abc',
+                'name' => 'Nguyễn Thị Hoài An',
+                'number' => '0956234456',
+                'address' => 'Số 77 Lĩnh Nam, Hoàng Mai, Hà Nội',
                 'email' => 'b@gmail.com'
             ],
             [
-                'name' => 'Le Van C',
-                'number' => '0123987654',
-                'address' => '789 abc',
+                'name' => 'Lê Văn Tuyến',
+                'number' => '0368238222',
+                'address' => ' Số 18 Hoàng Mai, Hoàng Mai, Hà Nội',
                 'email' => 'c@gmail.com'
             ],
         ]);
