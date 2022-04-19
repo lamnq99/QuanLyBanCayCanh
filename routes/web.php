@@ -34,3 +34,4 @@ Route::post('/create-customer', [BillController::class, 'createCustomer'])->midd
 Route::get('/get-products', [BillController::class, 'getProducts'])->middleware('auth');
 Route::get('/report', [HomeController::class, 'report'])->middleware('auth');
 Route::post('/print', [BillController::class, 'printBill'])->middleware('auth');
+Route::get('/billDay', [BillController::class, 'billByDay'])->name('billday')->middleware('auth');

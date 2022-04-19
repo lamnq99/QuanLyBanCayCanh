@@ -10,7 +10,7 @@ use App\Models\StaffInformation;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use DB;
 
 class BillController extends Controller
 {
@@ -213,5 +213,20 @@ class BillController extends Controller
             $bill->update();
             return response()->json(['data' => $bill]);
         }
+    }
+
+    public function billByDay(Request $request)
+    {
+        
+        $bill = BillDetail::whereBetween(DB::raw('DATE(updated_at)'), [$request->from, $request->end])->get();
+        $total = 0;
+        foreach ($bill as $item) {
+            $total += $item->amount * $item->unit_price;
+        }
+        $from = $request->from;
+        $end = $request->end;
+        // dd($bill);
+        return view('billday', compact('bill', 'total', 'from', 'end'));
+        
     }
 }

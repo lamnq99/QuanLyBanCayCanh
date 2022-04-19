@@ -278,4 +278,17 @@ $(document).ready(function () {
       }
     });
   });
+
+  $('#printBtnDay').on("click", function () {
+    print();
+    function print() {
+      var mywindow = window.open('', 'PRINT', 'height=600,width=800');
+      mywindow.document.write('<html><head>');
+      mywindow.document.write('<link href="../../../public/css/app.css" rel="stylesheet">');
+      mywindow.document.write('</head><body style="width: 80%; margin: auto;">');
+      mywindow.document.write($("#print").html());
+      mywindow.document.write('</body></html>');
+      mywindow.print();
+    }
+  });
 });
